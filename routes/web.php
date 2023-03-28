@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\backend\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\SiteController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ use App\Http\Controllers\backend\ProductController;
 // TRANG NGƯỜI DÙNG
 
 Route::get('/', [SiteController::class, 'index'])->name('site.home');
-
+Route::get('lien-he', [LienheController::class, 'index'])->name('site.index');
 // TRANG QUẢN LÝ
 
 Route::prefix('admin')->group(function () {
