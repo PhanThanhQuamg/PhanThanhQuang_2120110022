@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
-    <link href="frontend/css/bootstrap.min.css" rel="stylesheet">
-    <link href="frontend/css/font-awesome.min.css" rel="stylesheet">
-    <link href="frontend/css/prettyPhoto.css" rel="stylesheet">
-    <link href="frontend/css/price-range.css" rel="stylesheet">
-    <link href="frontend/css/animate.css" rel="stylesheet">
-    <link href="frontend/css/main.css" rel="stylesheet">
-    <link href="frontend/css/responsive.css" rel="stylesheet">
+    <title>Phan Thanh Quang</title>
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/price-range.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -107,15 +107,21 @@
                 </div>
             </div>
         </div>
-        <!--/header-middle-->
-
-        @includeIf('frontend.menu')
+        <!--/header-menu-->
+        <div class="header-bottom">
+            <x-main-menu />
+        </div>
+        <!--/header-menu-->
     </header>
     <!--/header-->
-    @includeIf('frontend.slider')
 
-
-
+    <section id="slider">
+        <!--slider-->
+        <div class="container">
+            <x-slideshow />
+        </div>
+    </section>
+    <!--/slider-->
     @yield('content')
     <footer id="footer">
         <!--Footer-->
@@ -125,7 +131,8 @@
                     <div class="col-sm-2">
                         <div class="companyinfo">
                             <h2><span>e</span>-shopper</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor
+                            </p>
                         </div>
                     </div>
                     <div class="col-sm-7">
@@ -257,7 +264,8 @@
                                 <input type="text" placeholder="Your email address" />
                                 <button type="submit" class="btn btn-default"><i
                                         class="fa fa-arrow-circle-o-right"></i></button>
-                                <p>Get the most recent updates from <br />our site and be updated your self...</p>
+                                <p>Get the most recent updates from <br />our site and be updated your self...
+                                </p>
                             </form>
                         </div>
                     </div>
@@ -281,12 +289,12 @@
 
 
 
-    <script src="frontend/js/jquery.js"></script>
-    <script src="frontend/js/bootstrap.min.js"></script>
-    <script src="frontend/js/jquery.scrollUp.min.js"></script>
-    <script src="frontend/js/price-range.js"></script>
-    <script src="frontend/js/jquery.prettyPhoto.js"></script>
-    <script src="frontend/js/main.js"></script>
+    <script src="{{ asset('frontend/js/jquery.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.scrollUp.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/price-range.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
 </body>
 
 </html>
