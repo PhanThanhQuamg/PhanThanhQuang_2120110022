@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Product;
 use App\Models\Post;
+use App\Models\Category;
 
 class SiteController extends Controller
 {
@@ -55,7 +56,8 @@ class SiteController extends Controller
 
     public function home()
     {
-        return view('frontend.home');
+        $list_category = Category::where([['parent_id', '=', 0], ['status', '=', '1']])->get();
+        return view('frontend.home', compact('list_category'));
     }
     private  function product_category($slug)
     {

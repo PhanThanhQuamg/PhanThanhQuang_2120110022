@@ -45,64 +45,51 @@
 
                     <div class="card-body">
                         @includeIf('backend.message_alert')
-                        <div class="row">
-                            <div class="col-md-9">
-                                <div class="mb-3">
-                                    <label for="name">Tên </label>
-                                    <input type="text" name="name" value="{{ old('name') }}" id="name"
-                                        class="form-control" placeholder="Nhập tên ">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="detail">Chi tiết</label>
-                                    <textarea name="detail" id="detail" class="form-control" placeholder="Chi tiết sản phẩm">{{ old('detail') }}</textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="metakey">Từ khóa</label>
-                                    <textarea name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey') }}</textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="metadesc">Mô tả</label>
-                                    <textarea name="metadesc" id="metadesc" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc') }}</textarea>
-                                </div>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="productinfo-tab" data-toggle="tab"
+                                    data-target="#productinfo" type="button" role="tab" aria-controls="productinfo"
+                                    aria-selected="true">Thông tin sản phẩm</button>
+                                <button class="nav-link" id="productimage-tab" data-toggle="tab" data-target="#productimage"
+                                    type="button" role="tab" aria-controls="productimage" aria-selected="false">Hình
+                                    ảnh</button>
+                                <button class="nav-link" id="productattribute-tab" data-toggle="tab"
+                                    data-target="#productattribute" type="button" role="tab"
+                                    aria-controls="productattribute" aria-selected="false">Thuộc tính
+                                </button>
+                                <button class="nav-link" id="productsale-tab" data-toggle="tab" data-target="#productsale"
+                                    type="button" role="tab" aria-controls="productsale" aria-selected="false">Khuyến
+                                    mãi
+                                </button>
+                                <button class="nav-link" id="productstore-tab" data-toggle="tab" data-target="#productstore"
+                                    type="button" role="tab" aria-controls="productstore" aria-selected="false">Nhập
+                                    sản phẩm
+                                </button>
                             </div>
-                            <div class="col-md-3">
-                                <div class="mb-3">
-                                    <label for="category_id">Danh mục sản phẩm</label>
-                                    <select class="form-control" name="category_id" id="category_id">
-                                        <option value="0">Chọn danh mục-</option>
-                                        @foreach ($html_category_id as $item)
-                                            <option value=" {{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="brand_id">Thương hiệu sản phẩm</label>
-                                    <select class="form-control" name="brand_id" id="brand_id">
-                                        <option value="0">Chọn thương hiệu</option>
-                                        @foreach ($html_brand_id as $item)
-                                            <option value=" {{ $item->id }}">{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="price">Giá </label>
-                                    <input type="number" name="price" value="{{ old('price') }}" id="price"
-                                        class="form-control" placeholder="Nhập giá sản phẩm ">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="image">Hình đại diện</label>
-                                    <input type="file" name="image" value="{{ old('image') }}" id="image"
-                                        class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="status">Trạng thái</label>
-                                    <select class="form-control" name="status" id="status">
-                                        <option value="1">Xuất bản</option>
-                                        <option value="0">Chưa xuất bản</option>
-                                    </select>
-                                </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active border-right border-bottom border-left p-3"
+                                id="productinfo" role="tabpanel" aria-labelledby="productinfo-tab">
+                                @includeIf('backend.product.tab_productinfo')
+                            </div>
+                            <div class="tab-pane fade border-right border-bottom border-left p-3" id="productimage"
+                                role="tabpanel" aria-labelledby="productimage-tab">
+                                @includeIf('backend.product.tab_productimage')
+                            </div>
+                            <div class="tab-pane fade border-right border-bottom border-left p-3" id="productattribute"
+                                role="tabpanel" aria-labelledby="productattribute-tab">
+                                @includeIf('backend.product.tab_productattribute')
+                            </div>
+                            <div class="tab-pane fade border-right border-bottom border-left p-3" id="productsale"
+                                role="tabpanel" aria-labelledby="productsale-tab">
+                                @includeIf('backend.product.tab_productsale')
+                            </div>
+                            <div class="tab-pane fade border-right border-bottom border-left p-3" id="productstore"
+                                role="tabpanel" aria-labelledby="productstore-tab">
+                                @includeIf('backend.product.tab_productstore')
                             </div>
                         </div>
+
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
