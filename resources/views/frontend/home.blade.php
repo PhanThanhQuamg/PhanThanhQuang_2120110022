@@ -1,6 +1,12 @@
 @extends('layouts.site')
 @section('title', 'Trang chủ')
 @section('content')
+    <section id="slider">
+        <!--slider-->
+        <div class="container">
+            <x-slideshow />
+        </div>
+    </section>
     <section>
         <div class="container">
             <div class="row">
@@ -159,11 +165,11 @@
                     <div class="col-sm-9 padding-right">
                         <div class="features_items">
                             <!--features_items-->
-                            <h2 class="title text-center">{{ $row_category->name }}</h2>
-                            <div class="col-sm-4">
-                                <x-product-home :rowcat="$row_category" />
-                            </div>
+                            <a href="{{ route('slug.home', ['slug' => $row_category->slug]) }}">
+                                <h2 class="title text-center">{{ $row_category->name }}</h2>
+                            </a>    
                         </div>
+                        <x-product-home :rowcat="$row_category" />
                     </div>
                 @endforeach
 

@@ -115,12 +115,7 @@
     </header>
     <!--/header-->
 
-    <section id="slider">
-        <!--slider-->
-        <div class="container">
-            <x-slideshow />
-        </div>
-    </section>
+    
     <!--/slider-->
     @yield('content')
     <footer id="footer">
@@ -140,7 +135,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="frontend/images//iframe1.png" alt="" />
+                                        <img src="frontend/images/iframe1.png" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -155,7 +150,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="frontend/images//iframe2.png" alt="" />
+                                        <img src="frontend/images/iframe2.png" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -170,7 +165,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="frontend/images//iframe3.png" alt="" />
+                                        <img src="frontend/images/iframe3.png" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>
@@ -185,7 +180,7 @@
                             <div class="video-gallery text-center">
                                 <a href="#">
                                     <div class="iframe-img">
-                                        <img src="frontend/images//iframe4.png" alt="" />
+                                        <img src="frontend/images/iframe4.png" alt="" />
                                     </div>
                                     <div class="overlay-icon">
                                         <i class="fa fa-play-circle-o"></i>

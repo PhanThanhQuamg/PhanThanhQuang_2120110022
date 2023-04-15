@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use App\Models\Link;
 use Illuminate\Support\Str;
 use App\Http\Requests\SliderStoreRequest;
 use App\Http\Requests\SliderUpdateRequest;

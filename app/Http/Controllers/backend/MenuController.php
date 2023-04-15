@@ -212,7 +212,7 @@ class MenuController extends Controller
         }
         $menu->status = ($menu->status == 1) ? 2 : 1;
         $menu->updated_at = date('Y-m-d H:i:s');
-        $menu->update_by = 1;
+        $menu->updated_by = 1;
         $menu->save();
         return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg' => 'Thay đổi trạng thái thành công !']);
     }
@@ -227,7 +227,7 @@ class MenuController extends Controller
         } else {
             $menu->status = 0;
             $menu->updated_at = date('Y-m-d H:i:s');
-            $menu->update_by = 1;
+            $menu->updated_by = 1;
             $menu->save();
             return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg' => 'Xóa vào thùng rác thành công !']);
         }
@@ -248,7 +248,7 @@ class MenuController extends Controller
         } else {
             $menu->status = 2;
             $menu->updated_at = date('Y-m-d H:i:s');
-            $menu->update_by = 1;
+            $menu->updated_by = 1;
             $menu->save();
             return redirect()->route('menu.trash')->with('message', ['type' => 'success', 'msg' => 'Khôi phục thành công !']);
         }
