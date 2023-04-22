@@ -15,13 +15,14 @@ use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
 
     public function index()
     {
+
         // $list_product = Product::all();
         $list_product  = Product::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('backend.product.index', compact('list_product'));
@@ -29,6 +30,7 @@ class ProductController extends Controller
 
     public function create()
     {
+
         // $list_product  = Product::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_category = Category::where('status', '!=', 0)->get();
         $list_brand = Brand::where('status', '!=', 0)->get();
@@ -41,10 +43,11 @@ class ProductController extends Controller
         foreach ($list_brand as $item) {
             $html_brand_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
         }
-        return view('backend.product.create', compact('html_category_id', 'html_brand_id'));
+        return view('backend.product.create', compact('html_category_id', 'html_brand_id', 'user_name'));
     }
     public function store(ProductStoreRequest $request)
     {
+        
         $product = new Product();
         $product->name = $request->name;
         $product->category_id = $request->category_id;

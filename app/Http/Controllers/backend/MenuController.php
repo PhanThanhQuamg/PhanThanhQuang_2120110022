@@ -13,12 +13,14 @@ use App\Models\Link;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class MenuController extends Controller
 {
     #GET: admin/menu , admin/menu/index
     public function index()
     {
+     
         $list_category  = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_brand  = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_topic  = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();

@@ -3,42 +3,47 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Link;
 use App\Models\Post;
+use App\Models\Topic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
 
     public function index()
     {
-        // $list_post = Post::all();
-        $list_post  = Post::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_post = Post::join('ptq_topic', 'ptq_topic.id', '=', 'ptq_post.topic_id')
+        ->select('ptq_post.*', 'ptq_topic.name as tenchude')
+        ->where('ptq_post.status', '!=', 0)
+        ->orderBy('ptq_post.created_at', 'desc')
+        ->get();
         return view('backend.post.index', compact('list_post'));
     }
 
     public function create()
     {
-        //$list_post  = Post::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $html_category_id = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $html_brand_id = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        return view('backend.post.create', compact('html_category_id', 'html_brand_id'));
+        $list_topic  = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $html_topic_id = '';
+        foreach ($list_topic as $item) {
+            $html_topic_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
+
+            //  $html_topic_id = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        }
+        // $html_brand_id = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        return view('backend.post.create', compact('html_topic_id'));
     }
     public function store(Request $request)
     {
         $post = new Post();
-        $post->category_id = $request->category_id;
-        $post->brand_id = $request->brand_id;
-        $post->name = $request->name;
-        $post->slug = Str::slug($post->name = $request->name, '-');
-        $post->price = $request->price;
+        $post->topic_id = $request->topic_id;
+        $post->title = $request->title;
+        $post->slug = Str::slug($post->title = $request->title, '-');
         $post->detail = $request->detail;
+        $post->type = 'post';
         $post->metakey = $request->metakey;
         $post->metadesc = $request->metadesc;
         $post->status = $request->status;
@@ -80,18 +85,19 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $list_post  = Post::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $html_sort_order = '';
+        $html_topic_id = '';
         foreach ($list_post as $item) {
-            $html_sort_order .= '<option value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
+            $html_topic_id = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         }
-        return view('backend.post.edit', compact('post', 'html_sort_order'));
+        return view('backend.post.edit', compact('post', 'html_topic_id'));
     }
 
     public function update(Request $request, string $id)
     {
         $post = Post::find($id);
-        $post->name = $request->name;
-        $post->slug = Str::slug($post->name = $request->name, '-');
+        $post->title = $request->title;
+        $post->slug = Str::slug($post->title = $request->title, '-');
+        $post->type = 'post';
         $post->metakey = $request->metakey;
         $post->metadesc = $request->metadesc;
         $post->status = $request->status;

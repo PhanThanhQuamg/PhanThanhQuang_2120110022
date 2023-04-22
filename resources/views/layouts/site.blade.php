@@ -27,6 +27,42 @@
     <link rel="apple-touch-icon-precomposed" href="frontend/images/apple-touch-icon-57-precomposed.png">
 </head>
 <!--/head-->
+<style>
+    .product {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50% -50%);
+
+    }
+
+    .product-img {
+        float: right;
+        margin: 10px 0;
+    }
+
+    .product-img img {
+        height: 92px;
+        margin: 10px 0;
+        display: block;
+        cursor: pointer;
+        opacity: 0.6;
+        transform: 0.8s;
+    }
+
+    .product-img img:hover {
+        opacity: 1;
+    }
+
+    .img-container {
+        float: right;
+    }
+
+    .img-container img {
+        height: 500;
+        width: 10;
+    }
+</style>
 
 <body>
     <header id="header">
@@ -115,7 +151,7 @@
     </header>
     <!--/header-->
 
-    
+
     <!--/slider-->
     @yield('content')
     <footer id="footer">

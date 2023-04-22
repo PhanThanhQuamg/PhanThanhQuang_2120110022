@@ -11,12 +11,14 @@ use App\Http\Requests\SliderStoreRequest;
 use App\Http\Requests\SliderUpdateRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class SliderController extends Controller
 {
     #GET: admin/slider , admin/slider/index
     public function index()
     {
+       ;
         $list_slider  = Slider::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('backend.slider.index', compact('list_slider'));
     }

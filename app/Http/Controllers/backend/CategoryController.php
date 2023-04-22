@@ -11,12 +11,14 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     #GET: admin/category , admin/category/index
     public function index()
     {
+        
         $list_category  = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('backend.category.index', compact('list_category'));
     }
