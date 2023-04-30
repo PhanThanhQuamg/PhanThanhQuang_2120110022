@@ -1,5 +1,16 @@
 @extends('layouts.admin')
 @section('title', 'Quản lý menu')
+{{-- Phân trang --}}
+@section('header')
+    <link rel="stylesheet" href="{{ asset('jquery.dataTables.min.css') }}">
+@endsection
+@section('footer')
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+@endsection
+{{-- end phân trang --}}
 @section('content')
     <form action="{{ route('menu.store') }}" method="post">
         @csrf
@@ -35,7 +46,7 @@
                             </div>
                             <div class="col-md-6 text-right">
 
-                                <a href="{{ route('category.trash') }}"class="btn btn-sm btn-danger">
+                                <a href="{{ route('menu.trash') }}"class="btn btn-sm btn-danger">
                                     <i class="fas fa-trash"></i> Thùng rác
                                 </a>
                             </div>
@@ -70,14 +81,14 @@
                                         <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
                                             data-parent="#accordionExample">
                                             <div class="card-body">
-                                                @foreach ($list_category as $category)
+                                                @foreach ($list_menu as $menu)
                                                     <div class="form-check">
                                                         <input name="checkIdCategory[]" class="form-check-input"
-                                                            type="checkbox" value="{{ $category->id }}"
-                                                            id="checkCategory{{ $category->id }}">
+                                                            type="checkbox" value="{{ $menu->id }}"
+                                                            id="checkCategory{{ $menu->id }}">
                                                         <label class="form-check-label"
-                                                            for="checkCategory{{ $category->id }}">
-                                                            {{ $category->name }}
+                                                            for="checkCategory{{ $menu->id }}">
+                                                            {{ $menu->name }}
                                                         </label>
                                                     </div>
                                                 @endforeach
@@ -108,7 +119,8 @@
                                                         <input name="checkIdBrand[]" class="form-check-input"
                                                             type="checkbox" value="{{ $brand->id }}"
                                                             id="checkBrand{{ $brand->id }}">
-                                                        <label class="form-check-label" for="checkBrand{{ $brand->id }}">
+                                                        <label class="form-check-label"
+                                                            for="checkBrand{{ $brand->id }}">
                                                             {{ $brand->name }}
                                                         </label>
                                                     </div>
@@ -221,7 +233,7 @@
                             </div>
                             <div class="col-md-9">
                                 @includeIf('backend.message_alert')
-                                <table class="table table-bordered">
+                                <table class="table table-bordered table-striped" id="myTable">
                                     <thead>
                                         <tr>
                                             <th style="width:30px" class="text-center">#</th>

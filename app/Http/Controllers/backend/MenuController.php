@@ -20,7 +20,7 @@ class MenuController extends Controller
     #GET: admin/menu , admin/menu/index
     public function index()
     {
-     
+
         $list_category  = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_brand  = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_topic  = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
@@ -188,20 +188,10 @@ class MenuController extends Controller
     public function destroy(string $id)
     {
         $menu = Menu::find($id);
-        //thong tin hinh xoa
-        $path_dir = "images/menu/";
-        $path_image_delete = $path_dir . $menu->image;
         if ($menu == null) {
             return redirect()->route('menu.trash')->with('message', ['type' => 'danger', 'msg' => 'Mẫu tin không tồn tại!']);
         }
-        if ($menu->delete()) {
-            //xoa hinh
-            if (File::exists($path_image_delete)) {
-                File::delete($path_image_delete);
-            }
-        }
-        $link = Link::where([['type', '=', 'menu'], ['tableid', '=', $id]])->first();
-        $link->delete();
+        $menu->delete();
         return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg' => 'Xóa mẫu tin thành công !']);
     }
 

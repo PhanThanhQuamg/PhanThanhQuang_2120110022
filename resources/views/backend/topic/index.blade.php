@@ -1,5 +1,16 @@
 @extends('layouts.admin')
 @section('title', 'Tất cả danh mục sản phẩm')
+{{-- Phân trang --}}
+@section('header')
+    <link rel="stylesheet" href="{{ asset('jquery.dataTables.min.css') }}">
+@endsection
+@section('footer')
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
+@endsection
+{{-- end phân trang --}}
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -43,7 +54,7 @@
 
                 <div class="card-body">
                     @includeIf('backend.message_alert')
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-striped" id="myTable">
                         <thead>
                             <tr>
                                 <th style="width:30px" class="text-center">#</th>
@@ -78,11 +89,11 @@
                                         @endif
 
                                         <a href="{{ route('topic.edit', ['topic' => $topic->id]) }}"
-                                            class="btn btn-sm btn-info"><i class="fas fa-edit"></i> Edit</a>
+                                            class="btn btn-sm btn-info"><i class="fas fa-edit"></i> </a>
                                         <a href="{{ route('topic.show', ['topic' => $topic->id]) }}"
-                                            class="btn btn-sm btn-success"><i class="far fa-eye"></i> View</a>
+                                            class="btn btn-sm btn-success"><i class="far fa-eye"></i> </a>
                                         <a href="{{ route('topic.delete', ['topic' => $topic->id]) }}"
-                                            class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> </a>
                                     </td>
                                     <td>{{ $topic->id }}</td>
                                 </tr>

@@ -28,6 +28,7 @@ use App\Http\Controllers\backend\AuthController;
 Route::get('/', [SiteController::class, 'index'])->name('site.home');
 Route::get('lien-he', [LienheController::class, 'index'])->name('site.index');
 Route::get('san-pham', [SiteController::class, 'product'])->name('site.product');
+Route::get('tim-kiem', [SiteController::class, 'search'])->name('site.search');
 Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('site.brand');
 Route::get('bai-viet', [SiteController::class, 'post'])->name('site.post');
 Route::get('khach-hang', [LienheController::class, 'index'])->name('site.index');

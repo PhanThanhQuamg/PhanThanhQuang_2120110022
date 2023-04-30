@@ -29,20 +29,17 @@
 <!--/head-->
 <style>
     .product {
+        width: 100%;
+        height: 100%;
         position: absolute;
         top: 50%;
-        left: 50%;
         transform: translate(-50% -50%);
 
     }
 
-    .product-img {
-        float: right;
-        margin: 10px 0;
-    }
-
     .product-img img {
-        height: 92px;
+        height: 80px;
+        width: 90px;
         margin: 10px 0;
         display: block;
         cursor: pointer;
@@ -55,12 +52,14 @@
     }
 
     .img-container {
-        float: right;
+        float: left;
     }
 
     .img-container img {
-        height: 500;
-        width: 10;
+        height: 480px;
+        width: 600px;
+        margin: 10px;
+        margin-top: 10px;
     }
 </style>
 

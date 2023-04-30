@@ -76,6 +76,15 @@
                                         </div>
                                     @endif
                                 </div>
+                                <div class="mb-3">
+                                    <label for="detail">Chi tiết</label>
+                                    <textarea name="detail" id="detail" class="form-control" placeholder="Nhập chi tiết">{{ old('detail', $post->detail) }}</textarea>
+                                    @if ($errors->has('detail'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('detail') }}
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="mb-3">
@@ -85,13 +94,6 @@
                                         {!! $html_topic_id !!}
                                     </select>
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="sort_order">Vị trí sắp xếp</label>
-                                    <select class="form-control" name="sort_order" id="sort_order">
-                                        <option value="0">-- Vị trí --</option>
-                                        {!! $html_sort_order !!}
-                                    </select>
-                                </div> --}}
                                 <div class="mb-3">
                                     <label for="image">Hình đại diện</label>
                                     <input type="file" name="image" value="{{ old('image') }}" id="image"

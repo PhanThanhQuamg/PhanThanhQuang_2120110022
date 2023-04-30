@@ -43,11 +43,11 @@ class ProductController extends Controller
         foreach ($list_brand as $item) {
             $html_brand_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
         }
-        return view('backend.product.create', compact('html_category_id', 'html_brand_id', 'user_name'));
+        return view('backend.product.create', compact('html_category_id', 'html_brand_id'));
     }
     public function store(ProductStoreRequest $request)
     {
-        
+
         $product = new Product();
         $product->name = $request->name;
         $product->category_id = $request->category_id;
@@ -99,15 +99,6 @@ class ProductController extends Controller
             }
         }
 
-
-        //     if ($product->save()) {
-        //         $link = new Link();
-        //         $link->slug = $product->slug;
-        //         $link->tableid = $product->id;
-        //         $link->type = 'product';
-        //         $link->save();
-        //        
-        //     } else
         return redirect()->route('product.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
     }
 

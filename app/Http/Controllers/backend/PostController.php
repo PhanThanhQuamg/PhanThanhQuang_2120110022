@@ -17,10 +17,10 @@ class PostController extends Controller
     public function index()
     {
         $list_post = Post::join('ptq_topic', 'ptq_topic.id', '=', 'ptq_post.topic_id')
-        ->select('ptq_post.*', 'ptq_topic.name as tenchude')
-        ->where('ptq_post.status', '!=', 0)
-        ->orderBy('ptq_post.created_at', 'desc')
-        ->get();
+            ->select('ptq_post.*', 'ptq_topic.name as tenchude')
+            ->where('ptq_post.status', '!=', 0)
+            ->orderBy('ptq_post.created_at', 'desc')
+            ->get();
         return view('backend.post.index', compact('list_post'));
     }
 
@@ -58,17 +58,10 @@ class PostController extends Controller
             $file->move($path_dir, $filename);
 
             $post->image = $filename;
-        }
-        // End upload
-        if ($post->save()) {
-            $link = new Link();
-            $link->slug = $post->slug;
-            $link->tableid = $post->id;
-            $link->type = 'post';
-            $link->save();
+            $post->save();
             return redirect()->route('post.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
-        } else
-            return redirect()->route('post.index')->with('message', ['type' => 'danger', 'msg' => 'Thêm mẫu tin không thành công !']);
+        }
+        return redirect()->route('post.index')->with('message', ['type' => 'danger', 'msg' => 'Thêm mẫu tin không thành công !']);
     }
 
     public function show(string $id)
@@ -100,6 +93,7 @@ class PostController extends Controller
         $post->type = 'post';
         $post->metakey = $request->metakey;
         $post->metadesc = $request->metadesc;
+        $post->detail = $request->detail;
         $post->status = $request->status;
         $post->updated_at = date('Y-m-d H:i:s');
         $post->update_by = 1;

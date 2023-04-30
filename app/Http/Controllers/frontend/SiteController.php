@@ -61,8 +61,9 @@ class SiteController extends Controller
 
     public function home()
     {
+        $list_topic = Topic::where('status', '=', '1')->get();
         $list_category = Category::where([['parent_id', '=', 0], ['status', '=', '1']])->get();
-        return view('frontend.home', compact('list_category'));
+        return view('frontend.home', compact('list_category', 'list_topic'));
     }
     private  function product_category($slug)
     {
@@ -166,14 +167,14 @@ class SiteController extends Controller
             ['type', '=', 'post'],
             ['topic_id', '=', $post->topic_id]
         ];
-        $post_list = Post::where()
+        $post_list = Post::where($args)
             ->orderBy('created_at', 'desc')
             ->take(3)->get();
-        return view('fronted.post-detail', compact('post', 'post_list'));
+        return view('frontend.post_detail', compact('post', 'post_list'));
     }
     private function error_404($slug)
     {
-        return view('fronted.404');
+        return view('frontend.404');
     }
     //tât cả sản phẩm
 
@@ -204,5 +205,12 @@ class SiteController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(9);
         return view('fronted.brapostnd', compact('post_list'));
+    }
+    public function search(Request $req)
+    {
+        $listsp = Product::where("name", "like", "%" . $req->key . "%")
+            ->orWhere('price_buy', $req->key)->get();
+            //var_dump($listsp);
+        return view('frontend.search', compact('listsp'));
     }
 }
