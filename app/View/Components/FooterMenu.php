@@ -7,7 +7,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use App\Models\Menu;
 
-class MainMenu extends Component
+
+class FooterMenu extends Component
 {
     /**
      * Create a new component instance.
@@ -22,7 +23,7 @@ class MainMenu extends Component
      */
     public function render(): View|Closure|string
     {
-        $list_menu = Menu::where([['position', '=', 'mainmenu'], ['status', '=', 1], ['parent_id', '=', '0']])->get();
-        return view('components.main-menu', compact('list_menu'));
+        $list_menu = Menu::where([['position', '=', 'footermenu'], ['status', '=', 1], ['parent_id', '=', '0']])->get();
+        return view('components.footer-menu', compact('list_menu'));
     }
 }

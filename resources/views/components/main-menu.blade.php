@@ -13,12 +13,9 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        @foreach ($list_menu as $row_menu)
-                            <li class="nav-item">
-                                <a href="{{ $row_menu->link }}" class="active nav-link">{{ $row_menu->name }}</a>
-                            </li>
+                        @foreach ($list_menu as $rowmenu)
+                            <x-menu-item :menu="$rowmenu" />
                         @endforeach
-
                     </ul>
                 </div>
             </div>

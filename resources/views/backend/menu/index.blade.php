@@ -81,14 +81,14 @@
                                         <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory"
                                             data-parent="#accordionExample">
                                             <div class="card-body">
-                                                @foreach ($list_menu as $menu)
+                                                @foreach ($list_category as $cate)
                                                     <div class="form-check">
                                                         <input name="checkIdCategory[]" class="form-check-input"
-                                                            type="checkbox" value="{{ $menu->id }}"
-                                                            id="checkCategory{{ $menu->id }}">
+                                                            type="checkbox" value="{{ $cate->id }}"
+                                                            id="checkCategory{{ $cate->id }}">
                                                         <label class="form-check-label"
-                                                            for="checkCategory{{ $menu->id }}">
-                                                            {{ $menu->name }}
+                                                            for="checkCategory{{ $cate->id }}">
+                                                            {{ $cate->name }}
                                                         </label>
                                                     </div>
                                                 @endforeach

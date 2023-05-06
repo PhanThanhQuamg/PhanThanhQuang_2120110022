@@ -206,11 +206,12 @@ class SiteController extends Controller
             ->paginate(9);
         return view('fronted.brapostnd', compact('post_list'));
     }
+
     public function search(Request $req)
     {
         $listsp = Product::where("name", "like", "%" . $req->key . "%")
             ->orWhere('price_buy', $req->key)->get();
-            //var_dump($listsp);
+        //var_dump($listsp);
         return view('frontend.search', compact('listsp'));
     }
 }
