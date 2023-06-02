@@ -75,7 +75,7 @@
         </div>
         <div style="margin-top: 50px" class="container">
             <h2 class="text-center text-danger">Chi Tiết Sản Phẩm</h2>
-            <p> {{ $product->detail }}</p>
+            <p> {!! $product->detail !!}</p>
         </div>
 
 
@@ -87,7 +87,7 @@
             <div class="recommended_items">
                 <!--recommended_items-->
                 <h2 class="title text-center">Sản phẩm cùng loại</h2>
-                <div class="col-md-9">
+                <div class="col-md-12">
                     @foreach ($product_list as $row)
                         @php
                             $product_image = $row->productimg;
@@ -96,7 +96,7 @@
                                 $hinh = $product_image[0]['image'];
                             }
                         @endphp
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <a href="{{ route('slug.home', ['slug' => $row->slug]) }}">

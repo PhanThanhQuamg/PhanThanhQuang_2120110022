@@ -71,11 +71,15 @@
                         </tr>
                         <tr>
                             <td>Từ khóa</td>
-                            <td>{{ $product->metakey }}</td>
+                            <td>{!! $product->metakey !!}</td>
                         </tr>
                         <tr>
                             <td>Mô tả</td>
-                            <td>{{ $product->metadesc }}</td>
+                            <td>{!! $product->metadesc !!}</td>
+                        </tr>
+                        <tr>
+                            <td>Chi tiết</td>
+                            <td>{!! $product->detail !!}</td>
                         </tr>
                         <tr>
                             <td>Tạo bởi</td>

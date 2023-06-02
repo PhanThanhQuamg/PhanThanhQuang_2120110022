@@ -187,7 +187,7 @@
                                                             id="checkPage{{ $page->id }}">
                                                         <label class="form-check-label"
                                                             for="checkPage{{ $page->id }}">
-                                                            {{ $page->name }}
+                                                            {{ $page->title }}
                                                         </label>
                                                     </div>
                                                 @endforeach

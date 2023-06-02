@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\SiteController;
+use App\Http\Controllers\frontend\CartController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\ProductController;
@@ -32,11 +33,21 @@ Route::get('tim-kiem', [SiteController::class, 'search'])->name('site.search');
 Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('site.brand');
 Route::get('bai-viet', [SiteController::class, 'post'])->name('site.post');
 Route::get('khach-hang', [LienheController::class, 'index'])->name('site.index');
-Route::get('gio-hang', [LienheController::class, 'index'])->name('site.index');
+Route::get('Add-Cart/{id}', [CartController::class, 'AddCart'])->name('cart.AddCart');
+Route::get('Delete-Item-Cart/{id}', [CartController::class, 'DeleteItemCart'])->name('cart.DeleteItemCart');
+Route::get('Delete-Item-List-Cart/{id}', [CartController::class, 'DeleteListItemCart'])->name('cart.DeleteListItemCart');
+Route::get('Save-Item-List-Cart/{id}/{quanty}', [CartController::class, 'SaveListItemCart']);
+Route::get('List-Cart', [CartController::class, 'ListCart'])->name('cart.ListCart');
+
 
 // Đăng nhập
 Route::get('login', [AuthController::class, 'getlogin'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::get('dang-nhap', [SiteController::class, 'getlogin'])->name('frontend.login');
+Route::post('dang-mhap', [SiteController::class, 'postlogin'])->name('frontend.postlogin');
+Route::get('dang-xuat', [SiteController::class, 'logoutcustomer'])->name('frontend.logout');
+Route::get('register', [SiteController::class, 'getregister'])->name('frontend.register');
+Route::post('register', [SiteController::class, 'postregister'])->name('frontend.postregister');
 // TRANG QUẢN LÝ
 Route::group(['prefix' => 'admin', 'middleware' => 'LoginAdmin'], (function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -131,4 +142,3 @@ Route::group(['prefix' => 'admin', 'middleware' => 'LoginAdmin'], (function () {
     });
 }));
 Route::get('{slug}', [SiteController::class, 'index'])->name('slug.home');
-

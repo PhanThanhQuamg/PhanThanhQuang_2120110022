@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'user',
         ],
+        'customer' => [
+            'driver' => 'session',
+            'provider' => 'customer',
+        ],
     ],
 
 
@@ -48,6 +52,10 @@ return [
         'user' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'customer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Customer::class,
         ],
 
 
@@ -58,6 +66,12 @@ return [
     'passwords' => [
         'user' => [
             'provider' => 'ptq_user ',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'customer' => [
+            'provider' => 'ptq_customer ',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

@@ -2,9 +2,10 @@
 @section('title', $post->title)
 @section('content')
     <div class="container">
-        <h2 class="text-center text-danger"> {{ $post->title }}</h2>
-        <img src="{{ asset('images/post/' . $post->image) }}" />
-        <p> {{ $post->detail }}</p>
+        <h2 class="text-center text-danger"> {{ $post->title }}</h2><br>
+        <p>{!! $post->metadesc !!}</p><br>
+        <img src="{{ asset('images/post/' . $post->image) }}" /><br>
+        <p> {!! $post->detail !!}</p>
     </div>
     <div class="recommended_items">
 

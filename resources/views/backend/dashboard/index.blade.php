@@ -25,7 +25,7 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3></h3>
+                                <h3>100000</h3>
 
                                 <p>Số lượng kho</p>
                             </div>
@@ -40,7 +40,7 @@
                         <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3></h3>
+                                <h3>100000</h3>
 
                                 <p>Bài viết</p>
                             </div>
@@ -56,7 +56,7 @@
                         <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3></h3>
+                                <h3>100000</h3>
 
                                 <p>Thành viên</p>
                             </div>

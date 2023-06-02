@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="metakey">Từ khóa</label>
-                                    <textarea name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey') }}</textarea>
+                                    <textarea name="metakey" id="metakeybrand" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey') }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="metadesc">Mô tả</label>
-                                    <textarea name="metadesc" id="metadesc" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc') }}</textarea>
+                                    <textarea name="metadesc" id="metadescbrand" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc') }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-3">

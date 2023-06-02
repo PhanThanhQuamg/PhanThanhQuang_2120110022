@@ -130,6 +130,7 @@ class ProductController extends Controller
         $product->slug = Str::slug($product->name = $request->name, '-');
         $product->metakey = $request->metakey;
         $product->metadesc = $request->metadesc;
+        $product->detail = $request->detail;
         $product->status = $request->status;
         $product->updated_at = date('Y-m-d H:i:s');
         $product->update_by = 1;
@@ -171,7 +172,7 @@ class ProductController extends Controller
             }
         }
         $link = Link::where([['type', '=', 'product'], ['tableid', '=', $id]])->first();
-        $link->delete();
+       // $link->delete();
         return redirect()->route('product.index')->with('message', ['type' => 'success', 'msg' => 'Xóa mẫu tin thành công !']);
     }
     #GET:admin/product/trash

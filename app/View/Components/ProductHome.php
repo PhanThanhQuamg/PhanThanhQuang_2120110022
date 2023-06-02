@@ -45,7 +45,7 @@ class ProductHome extends Component
         $product_list = Product::where('status', 1)
             ->whereIn('category_id', $list_category_id)
             ->orderBy('created_at', 'desc')
-            ->take(10)
+            ->take(6)
             ->get();
         return view('components.product-home', compact('row_cat', 'product_list'));
     }

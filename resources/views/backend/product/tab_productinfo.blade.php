@@ -12,7 +12,7 @@
          </div>
          <div class="mb-3">
              <label for="detail">Chi tiết</label>
-             <textarea name="detail" id="detail" class="form-control" placeholder="Chi tiết sản phẩm">{{ old('detail') }}</textarea>
+             <textarea name="detail" id="chitietsanpham" class="form-control" placeholder="Chi tiết sản phẩm">{{ old('detail') }}</textarea>
              @if ($errors->has('detail'))
                  <div class="text-danger">
                      {{ $errors->first('detail') }}
@@ -21,7 +21,7 @@
          </div>
          <div class="mb-3">
              <label for="metakey">Từ khóa</label>
-             <textarea name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey') }}</textarea>
+             <textarea name="metakey" id="tukhoasanpham" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey') }}</textarea>
              @if ($errors->has('metakey'))
                  <div class="text-danger">
                      {{ $errors->first('metakey') }}
@@ -30,7 +30,7 @@
          </div>
          <div class="mb-3">
              <label for="metadesc">Mô tả</label>
-             <textarea name="metadesc" id="metadesc" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc') }}</textarea>
+             <textarea name="metadesc" id="motasanpham" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc') }}</textarea>
              @if ($errors->has('metadesc'))
                  <div class="text-danger">
                      {{ $errors->first('metadesc') }}
@@ -85,10 +85,7 @@
                  </div>
              @endif
          </div>
-         <div class="mb-3">
-             <label for="image">Hình đại diện</label>
-             <input type="file" name="image" value="{{ old('image') }}" id="image" class="form-control">
-         </div>
+       
          <div class="mb-3">
              <label for="status">Trạng thái</label>
              <select class="form-control" name="status" id="status">

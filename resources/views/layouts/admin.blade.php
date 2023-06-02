@@ -152,6 +152,12 @@
                                         <p>Slider</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('slider.index') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Slider</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-header">LABELS</li>
@@ -204,6 +210,38 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('chitietsanpham')
+        CKEDITOR.replace('tukhoasanpham')
+        CKEDITOR.replace('motasanpham')
+        CKEDITOR.replace('edittukhoasanpham')
+        CKEDITOR.replace('editmotasanpham')
+        CKEDITOR.replace('tukhoacate')
+        CKEDITOR.replace('motacate')
+        CKEDITOR.replace('edittukhoacate')
+        CKEDITOR.replace('editmotacate')
+        CKEDITOR.replace('metakeybrand')
+        CKEDITOR.replace('metadescbrand')
+        CKEDITOR.replace('editmetakeybrand')
+        CKEDITOR.replace('editmetadescbrand')
+        CKEDITOR.replace('metakeypost')
+        CKEDITOR.replace('metadescpost')
+        CKEDITOR.replace('detailpost')
+        CKEDITOR.replace('editmetakeypost')
+        CKEDITOR.replace('editmetadescpost')
+        CKEDITOR.replace('editdetailpost')
+        CKEDITOR.replace('metakeypage')
+        CKEDITOR.replace('metadescpage')
+        CKEDITOR.replace('detailpage')
+        CKEDITOR.replace('editmetakeypage')
+        CKEDITOR.replace('editmetadescpage')
+        CKEDITOR.replace('metakeytopic')
+        CKEDITOR.replace('metadesctopic')
+        CKEDITOR.replace('editmetakeytopic')
+        CKEDITOR.replace('editmetadesctopic')
+        CKEDITOR.replace('editdetailsanpham')
+    </script>
     @yield('footer')
 </body>
 

@@ -70,11 +70,11 @@
                         </tr>
                         <tr>
                             <td>Từ khóa</td>
-                            <td>{{ $brand->metakey }}</td>
+                            <td>{!! $brand->metakey !!}</td>
                         </tr>
                         <tr>
                             <td>Mô tả</td>
-                            <td>{{ $brand->metadesc }}</td>
+                            <td>{!! $brand->metadesc !!}</td>
                         </tr>
                         <tr>
                             <td>Tạo bởi</td>

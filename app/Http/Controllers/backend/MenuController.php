@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Topic;
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\Link;
 use Illuminate\Support\Str;
@@ -24,9 +25,10 @@ class MenuController extends Controller
         $list_category  = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_brand  = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_topic  = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $list_page  = Post::where([['status', '!=', 0], ['type', '=', 'page']])->orderBy('created_at', 'desc')->get();
+        $list_page  = Page::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_post  = Post::where([['status', '!=', 0], ['type', '=', 'page']])->orderBy('created_at', 'desc')->get();
         $list_menu  = Menu::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        return view('backend.menu.index', compact('list_category', 'list_brand', 'list_topic', 'list_page', 'list_menu'));
+        return view('backend.menu.index', compact('list_category', 'list_brand', 'list_topic', 'list_post', 'list_menu', 'list_page'));
     }
     #GET: admin/menu/create , admin/menu/index
     public function create()
@@ -175,7 +177,7 @@ class MenuController extends Controller
         $menu->link = $request->link;
         $menu->parent_id = $request->parent_id;
         $menu->sort_order = $request->sort_order + 1;
-        // $menu->position = $request->position;
+        $menu->position = $request->position;
         $menu->status = $request->status;
         $menu->updated_at = date('Y-m-d H:i:s');
         $menu->updated_by = 1;

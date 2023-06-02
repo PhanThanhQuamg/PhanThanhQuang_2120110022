@@ -38,7 +38,7 @@
                                     <i class="fas fa-save"></i> Lưu[Cập nhật]
                                 </button>
                                 <a href="{{ route('product.index') }}"class="btn btn-sm btn-info">
-                                    <i class="fas fa-trash"></i> Quay lại danh sách
+                                    <i class="fas fa-long-arrow-alt-left"></i> Quay lại danh sách
                                 </a>
                             </div>
                         </div>
@@ -59,8 +59,17 @@
                                     @endif
                                 </div>
                                 <div class="mb-3">
+                                    <label for="detail">Chi tiết</label>
+                                    <textarea name="detail" id="editdetailsanpham" class="form-control" placeholder="Chi tiết sản phẩm">{{ old('detail', $product->detail) }}</textarea>
+                                    @if ($errors->has('detail'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('detail') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="mb-3">
                                     <label for="metakey">Từ khóa</label>
-                                    <textarea name="metakey" id="metakey" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey', $product->metakey) }}</textarea>
+                                    <textarea name="metakey" id="edittukhoasanpham" class="form-control" placeholder="Từ khóa tìm kiếm">{{ old('metakey', $product->metakey) }}</textarea>
                                     @if ($errors->has('metakey'))
                                         <div class="text-danger">
                                             {{ $errors->first('metakey') }}
@@ -69,7 +78,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="metadesc">Mô tả</label>
-                                    <textarea name="metadesc" id="metadesc" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc', $product->metadesc) }}</textarea>
+                                    <textarea name="metadesc" id="editmotasanpham" class="form-control" placeholder="Nhập mô tả">{{ old('metadesc', $product->metadesc) }}</textarea>
                                     @if ($errors->has('metadesc'))
                                         <div class="text-danger">
                                             {{ $errors->first('metadesc') }}

@@ -131,11 +131,121 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+
+                                {{-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> --}}
+                                <li>
+                                    <!-- Button trigger modal -->
+                                    <a data-toggle="modal" data-target="#staticBackdrop">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdrop" data-backdrop="static"
+                                        data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                        aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                    <button style="margin-bottom:25px" type="button" class="close"
+                                                        data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <div id="change-item-cart">
+                                                    @if (Session::has('Cart') != null)
+                                                        <div class="modal-body">
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    @foreach (Session::get('Cart')->products as $item)
+                                                                        @php
+                                                                            $product_image = $item['image'];
+                                                                            $hinh = null;
+                                                                            if (count($product_image) > 0) {
+                                                                                $hinh = $product_image[0]['image'];
+                                                                            }
+                                                                            
+                                                                        @endphp
+
+                                                                        <tr class="align-middle">
+                                                                            <td style="width:100px"
+                                                                                class="align-middle">
+                                                                                <img style="width:80px"
+                                                                                    src="{{ asset('images/product/' . $hinh) }}"
+                                                                                    alt="{{ $hinh }}">
+                                                                            </td>
+                                                                            <td style="width:400px">
+                                                                                <p>{{ $item['productInfo']->name }}</p>
+                                                                                {{ number_format($item['productInfo']->price_buy) }}
+                                                                                x {{ $item['soluong'] }}
+                                                                            </td>
+
+                                                                            <td class="si-close ">
+                                                                                <i class="fa fa-times"
+                                                                                    style="margin-right: 15px; margin-top:15px"
+                                                                                    data-id="{{ $item['productInfo']->id }}"></i>
+                                                                                {{-- <button style="margin-right: 15px; margin-top:15px" type="button">
+                                <i data-id="{{ $item['productInfo']->id }}">&times;</i>
+                            </button> --}}
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
+
+                                                                </tbody>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th>
+                                                                            <h6>Tổng</h6>
+                                                                        </th>
+                                                                        <th>
+                                                                            {{ number_format(Session::get('Cart')->tonggia, 0) }}
+                                                                            đ
+                                                                        </th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    @endif
+
+                                                </div>
+                                                <div class="modal-footer">
+
+
+                                                    <div class="col-md-6">
+
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <a href="{{ route('cart.ListCart') }}"
+                                                            class="btn btn-default add-to-cart"><i
+                                                                class="fa fa-shopping-cart"></i>Xem gio hang</a>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <a href="" class="btn btn-default add-to-cart"><i
+                                                                class="fa fa-shopping-cart"></i>Xem gio hang</a>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                                @if (Auth::guard('customer')->check())
+                                    <li><a href="#"><i class="fa fa-user"></i>
+                                            {{ Auth('customer')->user()->name }}</a>
+                                    </li>
+                                    <li><a href="{{ route('frontend.logout') }}"><i class="fa fa-lock"></i> Đăng
+                                            xuất</a>
+                                    </li>
+                                @else
+                                    <li><a href="{{ route('frontend.login') }}"><i class="fa fa-lock"></i> Login</a>
+                                    </li>
+                                @endif
+
                             </ul>
                         </div>
                     </div>
@@ -278,7 +388,47 @@
     <script src="{{ asset('frontend/js/jquery.scrollUp.min.js') }}"></script>
     <script src="{{ asset('frontend/js/price-range.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.prettyPhoto.js') }}"></script>
+
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+
+    <script>
+        function AddCart(id) {
+            $.ajax({
+                url: 'Add-Cart/' + id,
+                type: 'GET',
+            }).done(function(ketqua) {
+                // console.log(ketqua);
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(ketqua);
+                alertify.success('Đã thêm sản phẩm vào giỏ hàng !');
+            });
+        }
+
+        $("#change-item-cart").on("click", ".si-close i", function() {
+
+            //  console.log(id);
+            $.ajax({
+                url: 'Delete-Item-Cart/' + $(this).data("id"),
+                type: 'GET',
+            }).done(function(ketqua) {
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(ketqua);
+                alertify.success('Đã xóa sản phẩm thành công!');
+            });
+        });
+    </script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+
 </body>
 
 </html>
