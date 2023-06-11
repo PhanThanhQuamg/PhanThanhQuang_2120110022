@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="mb-3">
-                                    <label for="name">Tên trang đơn</label>
+                                    <label for="title">Tên trang đơn</label>
                                     <input type="text" name="title" value="{{ old('title') }}" id="name"
                                         class="form-control" placeholder="Nhập tên trang đơn">
                                     @if ($errors->has('title'))
@@ -90,7 +90,7 @@
                                     <label for="topic_id">Chủ đề</label>
                                     <select class="form-control" name="topic_id" id="topic_id">
                                         <option value="0">-- Cấp cha --</option>
-                                        {!! $html_topic_id !!}
+                                        {{-- {!! $html_topic_id !!} --}}
                                     </select>
                                 </div>
                                 {{-- <div class="mb-3">

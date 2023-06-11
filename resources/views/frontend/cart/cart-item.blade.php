@@ -44,4 +44,7 @@
             </tfoot>
         </table>
     </div>
+@else
+    <p class="text-center mt-4">Không có sản phẩm trong giỏ hàng
+    </p>
 @endif

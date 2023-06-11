@@ -85,13 +85,6 @@
                                         {!! $html_topic_id !!}
                                     </select>
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="sort_order">Vị trí sắp xếp</label>
-                                    <select class="form-control" name="sort_order" id="sort_order">
-                                        <option value="0">-- Vị trí --</option>
-                                        {!! $html_sort_order !!}
-                                    </select>
-                                </div> --}}
                                 <div class="mb-3">
                                     <label for="image">Hình đại diện</label>
                                     <input type="file" name="image" value="{{ old('image') }}" id="image"

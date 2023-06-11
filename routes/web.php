@@ -13,6 +13,12 @@ use App\Http\Controllers\backend\TopicController;
 use App\Http\Controllers\backend\MenuController;
 use App\Http\Controllers\backend\SliderController;
 use App\Http\Controllers\backend\AuthController;
+use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\CustomerController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +42,10 @@ Route::get('khach-hang', [LienheController::class, 'index'])->name('site.index')
 Route::get('Add-Cart/{id}', [CartController::class, 'AddCart'])->name('cart.AddCart');
 Route::get('Delete-Item-Cart/{id}', [CartController::class, 'DeleteItemCart'])->name('cart.DeleteItemCart');
 Route::get('Delete-Item-List-Cart/{id}', [CartController::class, 'DeleteListItemCart'])->name('cart.DeleteListItemCart');
-Route::get('Save-Item-List-Cart/{id}/{quanty}', [CartController::class, 'SaveListItemCart']);
+Route::get('Save-Item-List-Cart/{id}/{soluong}', [CartController::class, 'SaveListItemCart']);
 Route::get('List-Cart', [CartController::class, 'ListCart'])->name('cart.ListCart');
+Route::get('Thanh-toan', [CartController::class, 'Checkout'])->name('cart.Checkout');
+Route::get('Đat-hang-thanh-cong', [CartController::class, 'thanhcong'])->name('cart.thanhcong');
 
 
 // Đăng nhập
@@ -139,6 +147,33 @@ Route::group(['prefix' => 'admin', 'middleware' => 'LoginAdmin'], (function () {
         Route::get('delete/{page}', [PageController::class, 'delete'])->name('page.delete');
         Route::get('restore/{page}', [PageController::class, 'restore'])->name('page.restore');
         Route::get('destroy/{page}', [PageController::class, 'destroy'])->name('page.destroy');
+    });
+    //order
+    Route::resource('order', OrderController::class);
+    Route::get('order_trash', [OrderController::class, 'trash'])->name('order.trash');
+    Route::prefix('order')->group(function () {
+        Route::get('status/{order}', [OrderController::class, 'status'])->name('order.status');
+        Route::get('delete/{order}', [OrderController::class, 'delete'])->name('order.delete');
+        Route::get('restore/{order}', [OrderController::class, 'restore'])->name('order.restore');
+        Route::get('destroy/{order}', [OrderController::class, 'destroy'])->name('order.destroy');
+    });
+    //user
+    Route::resource('user', UserController::class);
+    Route::get('user_trash', [UserController::class, 'trash'])->name('user.trash');
+    Route::prefix('user')->group(function () {
+        Route::get('status/{user}', [UserController::class, 'status'])->name('user.status');
+        Route::get('delete/{user}', [UserController::class, 'delete'])->name('user.delete');
+        Route::get('restore/{user}', [UserController::class, 'restore'])->name('user.restore');
+        Route::get('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+    });
+    //customer
+    Route::resource('customer', CustomerController::class);
+    Route::get('customer_trash', [CustomerController::class, 'trash'])->name('customer.trash');
+    Route::prefix('customer')->group(function () {
+        Route::get('status/{customer}', [CustomerController::class, 'status'])->name('customer.status');
+        Route::get('delete/{customer}', [CustomerController::class, 'delete'])->name('customer.delete');
+        Route::get('restore/{customer}', [CustomerController::class, 'restore'])->name('customer.restore');
+        Route::get('destroy/{customer}', [CustomerController::class, 'destroy'])->name('customer.destroy');
     });
 }));
 Route::get('{slug}', [SiteController::class, 'index'])->name('slug.home');

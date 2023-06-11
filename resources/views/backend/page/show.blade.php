@@ -74,15 +74,15 @@
                         </tr>
                         <tr>
                             <td>Từ khóa</td>
-                            <td>{{ $page->metakey }}</td>
+                            <td>{!! $page->metakey !!}</td>
                         </tr>
                         <tr>
                             <td>Mô tả</td>
-                            <td>{{ $page->metadesc }}</td>
+                            <td>{!! $page->metadesc !!}</td>
                         </tr>
                         <tr>
                             <td>Chi tiết</td>
-                            <td>{{ $page->detail }}</td>
+                            <td>{!! $page->detail !!}</td>
                         </tr>
                         <tr>
                             <td>Tạo bởi</td>

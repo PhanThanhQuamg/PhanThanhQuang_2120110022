@@ -1,7 +1,6 @@
 @extends('layouts.site')
 @section('title', 'Kết quả tìm kiếm')
 @section('content')
-
     <div class="container">
         <div class="row">
             @foreach ($listsp as $product)
@@ -12,7 +11,6 @@
                         $hinh = $product_image[0]['image'];
                     }
                 @endphp
-
                 <div class="col-md-3 text-center">
                     <div class="card" style="width: 200px;">
                         <a href="{{ route('slug.home', ['slug' => $product->slug]) }}">
@@ -28,7 +26,5 @@
                 </div>
             @endforeach
         </div>
-
     </div>
-
 @endsection

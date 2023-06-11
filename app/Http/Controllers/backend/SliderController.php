@@ -17,23 +17,19 @@ class SliderController extends Controller
 {
     #GET: admin/slider , admin/slider/index
     public function index()
-    {
-       ;
+    {;
         $list_slider  = Slider::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('backend.slider.index', compact('list_slider'));
     }
     #GET: admin/slider/create , admin/slider/index
     public function create()
     {
-        //$list_slider = Slider::where('status', '!=', 0)->get();
         $list_slider  = Slider::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $html_parent_id = '';
         $html_sort_order = '';
         foreach ($list_slider as $item) {
-            $html_parent_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
             $html_sort_order .= '<option value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
         }
-        return view('backend.slider.create', compact('html_parent_id', 'html_sort_order'));
+        return view('backend.slider.create', compact('html_sort_order'));
     }
 
     // thêm
@@ -41,11 +37,9 @@ class SliderController extends Controller
     {
         $slider = new Slider();
         $slider->name = $request->name;
-        $slider->slug = Str::slug($slider->name = $request->name, '-');
-        $slider->metakey = $request->metakey;
-        $slider->metadesc = $request->metadesc;
-        $slider->parent_id = $request->parent_id;
+        $slider->link = $request->link;
         $slider->sort_order = $request->sort_order;
+        $slider->posistion = $request->posistion;
         $slider->status = $request->status;
         $slider->created_at = date('Y-m-d H:i:s');
         $slider->create_by = 1;
@@ -54,21 +48,14 @@ class SliderController extends Controller
             $path_dir = "images/slider"; // nơi lưu trữ
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); // lấy phần mở rộng của tập tin 
-            $filename = $slider->slug . '.' . $extension; // lấy tên slug  + phần mở rộng 
+            $filename = $slider->name . '.' . $extension; // lấy tên slug  + phần mở rộng 
             $file->move($path_dir, $filename);
 
             $slider->image = $filename;
+            $slider->save();
+            return redirect()->route('slider.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
         }
         // End upload
-        if ($slider->save()) {
-            $link = new Link();
-            $link->slug = $slider->slug;
-            $link->tableid = $slider->id;
-            $link->type = 'slider';
-            $link->save();
-            return redirect()->route('slider.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
-        } else
-            return redirect()->route('slider.index')->with('message', ['type' => 'danger', 'msg' => 'Thêm mẫu tin không thành công !']);
     }
 
     public function show(string $id)
@@ -146,8 +133,6 @@ class SliderController extends Controller
                 File::delete($path_image_delete);
             }
         }
-        $link = Link::where([['type', '=', 'slider'], ['tableid', '=', $id]])->first();
-        $link->delete();
         return redirect()->route('slider.index')->with('message', ['type' => 'success', 'msg' => 'Xóa mẫu tin thành công !']);
     }
 

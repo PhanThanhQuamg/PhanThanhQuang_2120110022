@@ -11,18 +11,17 @@
                                 <li data-target="#slider-carousel" data-slide-to="1"></li>
                                 <li data-target="#slider-carousel" data-slide-to="2"></li>
                             </ol>
-                            
+
                             <div class="carousel-inner">
                                 @foreach ($list_slider as $row_slider)
                                     @if ($loop->first)
                                         <div class="item active">
-                                            <img src="{{ asset('frontend/images/' . $row_slider->image) }}"
+                                            <img src="{{ asset('images/slider/' . $row_slider->image) }}"
                                                 class="girl img-responsive" alt="{{ $row_slider->image }}" />
                                         </div>
                                     @else
                                         <div class="item">
-
-                                            <img src="{{ asset('frontend/images/' . $row_slider->image) }}"
+                                            <img src="{{ asset('images/slider/' . $row_slider->image) }}"
                                                 class="girl img-responsive" alt="{{ $row_slider->image }}" />
                                         </div>
                                     @endif

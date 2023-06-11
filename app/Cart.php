@@ -36,13 +36,13 @@ class Cart
         $this->tonggia -= $this->products[$id]['gia'];
         unset($this->products[$id]);
     }
-    public function UpdateItemCart($id, $soluong)
+    public function UpdateCart($id, $soluong)
     {
         $this->tongsoluong -= $this->products[$id]['soluong'];
         $this->tonggia -= $this->products[$id]['gia'];
 
         $this->products[$id]['soluong'] = $soluong;
-        $this->products[$id]['gia'] = $soluong * $this->products[$id]['productsInfo']->gia;
+        $this->products[$id]['gia'] = $soluong * $this->products[$id]['productsInfo']->price_buy;
 
         $this->tongsoluong += $this->products[$id]['soluong'];
         $this->tonggia += $this->products[$id]['gia'];

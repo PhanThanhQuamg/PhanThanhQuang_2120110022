@@ -22,40 +22,28 @@
                         <div class="col-md-4">
                             <div class="single-products">
                                 <div class="productinfo text-center">
-                                    <img class="img-fluid w-100" src="{{ asset('images/product/' . $hinh) }}"
-                                        alt="{{ $hinh }}" />
-                                    <h2>{{ $product->price_buy }}</h2>
-                                    <p>{{ $product->name }}</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Add
-                                        to
-                                        cart</a>
+                                    <a href="{{ route('slug.home', ['slug' => $product->slug]) }}">
+                                        <img style="height:180px" class="img-fluid w-100"
+                                            src="{{ asset('images/product/' . $hinh) }}" alt="{{ $hinh }}" /></a>
+                                    <h2>{{ number_format($product->price_buy, 0) }}VNĐ</h2>
+                                    <p
+                                        style="  text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;">
+                                        {{ $product->name }}</p>
+                                    <a onclick="AddCart({{ $product->id }})" href="javasCrip:"
+                                        class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ
+                                        hàng</a>
                                 </div>
-                                <div class="product-overlay">
-                                    <div class="overlay-content">
-                                        <a href="{{ route('slug.home', ['slug' => $product->slug]) }}">
-                                            <img src="{{ asset('images/product/' . $hinh) }}" alt="{{ $hinh }}" />
-                                        </a>
-                                        <h2>{{ $product->price_buy }}</h2>
-                                        <p>{{ $product->name }}</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i
-                                                class="fa fa-shopping-cart"></i>Add to
-                                            cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
+
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <div>{{ $product_list->links() }}</div>
             </div>
-
         </div>
-    @endsection
+        <div class="col-12">
+            {{ $product_list->links() }}</div>
+    </div>
+    </div>
+@endsection

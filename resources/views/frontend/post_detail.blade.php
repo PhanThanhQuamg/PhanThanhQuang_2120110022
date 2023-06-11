@@ -8,10 +8,8 @@
         <p> {!! $post->detail !!}</p>
     </div>
     <div class="recommended_items">
-
         <h2 class="title text-center">Bài viết cùng chủ đề</h2>
         <div class="col-md-9">
-
             <ul>
                 <li>
                     @foreach ($post_list as $item)
@@ -22,7 +20,5 @@
                 </li>
             </ul>
         </div>
-
     </div>
-
 @endsection

@@ -48,8 +48,7 @@
                     <span>
 
                         <span>{{ number_format($product->price_buy, 0) }} VNĐ</span>
-                        <label>Quantity:</label>
-                        <input type="text" value="3">
+
 
                     </span>
 
@@ -66,9 +65,8 @@
                     <p><b>Thời gian vận chuyển: </b> 3-5 Ngày</p>
                     <p><b>Thời hiệu:</b> {{ $product->braname }}</p>
 
-                    <button type="button" class="btn btn-fefault cart">
-                        <i class="fa fa-shopping-cart"></i>Add to cart
-                    </button>
+                    <a onclick="AddCart({{ $product->id }})" href="javasCrip:" class="btn btn-default add-to-cart"><i
+                            class="fa fa-shopping-cart"></i>Thêm giỏ hàng</a>
                 </div>
                 <!--/product-information-->
             </div>
@@ -100,24 +98,20 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <a href="{{ route('slug.home', ['slug' => $row->slug]) }}">
-                                        <img src="{{ asset('images/product/' . $hinh) }}" alt="{{ $hinh }}" />
+                                        <img style="width:250px;height:200px" src="{{ asset('images/product/' . $hinh) }}"
+                                            alt="{{ $hinh }}" />
                                     </a>
                                     <h2>{{ number_format($row->price_buy, 0) }} VNĐ</h2>
-                                    <p>{{ $row->name }}</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i
-                                            class="fa fa-shopping-cart"></i>Add
-                                        to
-                                        cart</a>
+                                    <p
+                                        style="  text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;">
+                                        {{ $product->name }}</p>
+                                    <a onclick="AddCart({{ $product->id }})" href="javasCrip:"
+                                        class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ
+                                        hàng</a>
                                 </div>
 
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a>
-                                    </li>
-                                </ul>
                             </div>
                         </div>
                     @endforeach

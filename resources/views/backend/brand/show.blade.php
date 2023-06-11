@@ -63,7 +63,7 @@
                         </tr>
                         <tr>
                             <td>Hình ảnh</td>
-                            <td>
+                            <td style="width:250px">
                                 <img class="img-fluid" src="{{ asset('images/brand/' . $brand->image) }}"
                                     alt="{{ $brand->image }}">
                             </td>

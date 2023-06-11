@@ -12,7 +12,7 @@
                         <form action="{{ route('frontend.postlogin') }}" method="post">
                             @method('POST')
                             @csrf
-                            <input type="text" name="username" placeholder="Tên đăng nhập">
+                            <input type="text" name="username" placeholder="Tên tài khoản">
                             <input type="password" name="password" placeholder="Mật khẩu">
                             <span>
                                 <input type="checkbox" class="checkbox">

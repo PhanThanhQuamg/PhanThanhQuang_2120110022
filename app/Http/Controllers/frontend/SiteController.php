@@ -11,7 +11,7 @@ use App\Models\Topic;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Customer;
-
+use App\Models\Page;
 use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
@@ -96,7 +96,7 @@ class SiteController extends Controller
         $product_list = Product::where('status', 1)
             ->whereIn('category_id', $list_category_id)
             ->orderBy('created_at', 'desc')
-            ->paginate(2);
+            ->paginate(3);
         return view('frontend.product-category', compact('product_list', 'row_cat'));
     }
     private  function product_brand($slug)
@@ -104,7 +104,7 @@ class SiteController extends Controller
         $row_brand = Brand::where([['slug', '=', $slug], ['status', '=', 1]])->first();
         $product_list = Product::where([['status', '=', '1'], ['brand_id', '=', $row_brand->id]])
             ->orderBy('created_at', 'desc')
-            ->paginate(1);
+            ->paginate(3);
         return view('frontend.product-brand', compact('row_brand', 'product_list'));
     }
     private function product_detail($product)
@@ -159,7 +159,8 @@ class SiteController extends Controller
             ['slug', '=', $slug]
         ];
         $post = Post::where($args)->first();
-        return view('frontend.post-page', compact('post'));
+        $page = Page::where($args)->first();
+        return view('frontend.post-page', compact('post', 'page'));
     }
 
     private function post_detail($post)

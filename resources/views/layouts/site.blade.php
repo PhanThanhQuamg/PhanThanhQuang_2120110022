@@ -65,75 +65,19 @@
 
 <body>
     <header id="header">
-        <!--header-->
-        <div class="header_top">
-            <!--header_top-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="contactinfo">
-                            <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="social-icons pull-right">
-                            <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/header_top-->
-
         <div class="header-middle">
             <!--header-middle-->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="frontend/images//logo.png" alt="" /></a>
-                        </div>
-                        <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa"
-                                    data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
-                                </ul>
-                            </div>
+                            <a href="index.html"><img style="width:120px;hieght:50px";
+                                    src="frontend/images/thanhquang.png" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-
-                                {{-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li> --}}
                                 <li>
                                     <!-- Button trigger modal -->
                                     <a data-toggle="modal" data-target="#staticBackdrop">
@@ -147,7 +91,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                    <h5 class="modal-title" id="staticBackdropLabel">GIỎ HÀNG</h5>
                                                     <button style="margin-bottom:25px" type="button" class="close"
                                                         data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -186,9 +130,6 @@
                                                                                 <i class="fa fa-times"
                                                                                     style="margin-right: 15px; margin-top:15px"
                                                                                     data-id="{{ $item['productInfo']->id }}"></i>
-                                                                                {{-- <button style="margin-right: 15px; margin-top:15px" type="button">
-                                <i data-id="{{ $item['productInfo']->id }}">&times;</i>
-                            </button> --}}
                                                                             </td>
                                                                         </tr>
                                                                     @endforeach
@@ -207,6 +148,9 @@
                                                                 </tfoot>
                                                             </table>
                                                         </div>
+                                                    @else
+                                                        <p class="text-center mt-4">Không có sản phẩm trong giỏ hàng
+                                                        </p>
                                                     @endif
 
                                                 </div>
@@ -222,8 +166,9 @@
                                                                 class="fa fa-shopping-cart"></i>Xem gio hang</a>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <a href="" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Xem gio hang</a>
+                                                        <a href="{{ route('cart.Checkout') }}"
+                                                            class="btn btn-default add-to-cart"><i
+                                                                class="fa fa-shopping-cart"></i>Thanh toán</a>
                                                     </div>
                                                 </div>
 
@@ -242,7 +187,8 @@
                                             xuất</a>
                                     </li>
                                 @else
-                                    <li><a href="{{ route('frontend.login') }}"><i class="fa fa-lock"></i> Login</a>
+                                    <li><a href="{{ route('frontend.login') }}"><i class="fa fa-lock"></i> Đăng
+                                            nhập</a>
                                     </li>
                                 @endif
 

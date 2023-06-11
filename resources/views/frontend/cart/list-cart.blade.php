@@ -16,9 +16,9 @@
         <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
         <link href="{{ asset('frontend/css/responsive.css') }}" rel="stylesheet">
         <!--[if lt IE 9]>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <script src="js/html5shiv.js"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <script src="js/respond.min.js"></script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <![endif]-->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <script src="js/html5shiv.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <script src="js/respond.min.js"></script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <![endif]-->
         <link rel="shortcut icon" href="images/ico/favicon.ico">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -77,7 +77,7 @@
                                             <td class="cart_quantity">
                                                 <div class="cart_quantity_button">
                                                     <input id="quanty-item-{{ $item['productInfo']->id }}"
-                                                        class="cart_quantity_input" type="text" name="quantity"
+                                                        class="cart_quantity_input" type="text"
                                                         value="{{ $item['soluong'] }}" autocomplete="off" size="2">
                                                 </div>
                                             </td>
@@ -90,8 +90,8 @@
                                                 <a class="cart_quantity_delete"
                                                     onclick="DeleteListItemCart({{ $item['productInfo']->id }});"><i
                                                         class="fa fa-times"></i></a>
-                                                <a onclick="SaveListItemCart({{ $item['productInfo']->id }});"
-                                                    class="cart_quantity_save"><i class="fa fa-save"></i></a>
+                                                <a onclick="SaveListItemCart({{ $item['productInfo']->id }})";><i
+                                                        class="fa fa-save"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -105,12 +105,19 @@
                             <div class="proceed-checkout">
                                 <table class="table table-bordered table-striped">
                                     <tr>
-                                        <td>Tổng số lượng</td>
-                                        <td>Tông tiền</td>
+                                        <td class="text-center">Tổng tiền</td>
+                                        <td class="text-center"> Tổng số lượng</td>
+
                                     </tr>
                                     <tr>
-                                        <td>Tổng số lượng</td>
-                                        <td>
+                                        <td class="text-center">
+                                            @if (Session::has('Cart') != null)
+                                                {{ number_format(Session::get('Cart')->tonggia, 0) }} VNĐ
+                                            @else
+                                                0
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
                                             @if (Session::has('Cart') != null)
                                                 {{ Session::get('Cart')->tongsoluong }}
                                             @else
@@ -126,89 +133,6 @@
                 </div>
             </div>
         </section>
-
-
-        <!--/#cart_items-->
-
-        {{-- <section id="do_action">
-            <div class="container">
-                <div class="heading">
-                    <h3>What would you like to do next?</h3>
-                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
-                        delivery cost.</p>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="chose_area">
-                            <ul class="user_option">
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Use Coupon Code</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Use Gift Voucher</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Estimate Shipping & Taxes</label>
-                                </li>
-                            </ul>
-                            <ul class="user_info">
-                                <li class="single_field">
-                                    <label>Country:</label>
-                                    <select>
-                                        <option>United States</option>
-                                        <option>Bangladesh</option>
-                                        <option>UK</option>
-                                        <option>India</option>
-                                        <option>Pakistan</option>
-                                        <option>Ucrane</option>
-                                        <option>Canada</option>
-                                        <option>Dubai</option>
-                                    </select>
-
-                                </li>
-                                <li class="single_field">
-                                    <label>Region / State:</label>
-                                    <select>
-                                        <option>Select</option>
-                                        <option>Dhaka</option>
-                                        <option>London</option>
-                                        <option>Dillih</option>
-                                        <option>Lahore</option>
-                                        <option>Alaska</option>
-                                        <option>Canada</option>
-                                        <option>Dubai</option>
-                                    </select>
-
-                                </li>
-                                <li class="single_field zip-field">
-                                    <label>Zip Code:</label>
-                                    <input type="text">
-                                </li>
-                            </ul>
-                            <a class="btn btn-default update" href="">Get Quotes</a>
-                            <a class="btn btn-default check_out" href="">Continue</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="total_area">
-                            <ul>
-                                <li>Cart Sub Total <span>$59</span></li>
-                                <li>Eco Tax <span>$2</span></li>
-                                <li>Shipping Cost <span>Free</span></li>
-                                <li>Total <span>$61</span></li>
-                            </ul>
-                            <a class="btn btn-default update" href="">Update</a>
-                            <a class="btn btn-default check_out" href="">Check Out</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
-        <!--/#do_action-->
-
 
         <!--/Footer-->
 
@@ -231,7 +155,6 @@
             }
 
             function SaveListItemCart(id) {
-
                 $.ajax({
                     url: 'Save-Item-List-Cart/' + id + '/' + $("#quanty-item-" + id).val(),
                     type: 'GET',

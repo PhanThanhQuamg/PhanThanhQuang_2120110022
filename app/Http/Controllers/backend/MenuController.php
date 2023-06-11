@@ -25,8 +25,8 @@ class MenuController extends Controller
         $list_category  = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_brand  = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $list_topic  = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $list_page  = Page::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $list_post  = Post::where([['status', '!=', 0], ['type', '=', 'page']])->orderBy('created_at', 'desc')->get();
+        $list_page  = Page::where([['status', '!=', 0], ['type', '=', 'page']])->orderBy('created_at', 'desc')->get();
+        $list_post  = Post::where([['status', '!=', 0], ['type', '=', 'post']])->orderBy('created_at', 'desc')->get();
         $list_menu  = Menu::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         return view('backend.menu.index', compact('list_category', 'list_brand', 'list_topic', 'list_post', 'list_menu', 'list_page'));
     }
@@ -107,9 +107,9 @@ class MenuController extends Controller
         if (isset($request->ADDPAGE)) {
             $list_id = $request->checkIdPage;
             foreach ($list_id as $id) {
-                $page = Post::find($id);
+                $page = Page::find($id);
                 $menu = new Menu();
-                $menu->name = $page->name;
+                $menu->name = $page->title;
                 $menu->link = $page->slug;
                 $menu->table_id = $id;
                 $menu->parent_id = 0;

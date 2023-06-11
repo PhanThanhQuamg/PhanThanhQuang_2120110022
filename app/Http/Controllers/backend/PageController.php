@@ -9,7 +9,6 @@ use App\Models\Page;
 use App\Models\Topic;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -84,12 +83,12 @@ class PageController extends Controller
     public function edit(string $id)
     {
         $page = Page::find($id);
-        $list_page  = Page::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_topic = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
         $html_topic_id = '';
-        foreach ($list_page as $item) {
-            $html_topic_id = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        foreach ($list_topic as $item) {
+            $html_topic_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
         }
-        return view('backend.page.edit', compact('page', 'html_topic_id'));
+        return view('backend.page.edit', compact('html_topic_id', 'page'));
     }
 
     public function update(Request $request, string $id)
