@@ -19,13 +19,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <form action="{{ route('site.search') }}" method="get">
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search" name="key" />
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
 </div>

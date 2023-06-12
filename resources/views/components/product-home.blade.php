@@ -4,9 +4,9 @@
         $hinh = null;
         if (count($product_image) > 0) {
             $hinh = $product_image[0]['image'];
-        }   
+        }
     @endphp
-    <div class="col-sm-4 ">
+    <div style="margin-bottom: 15px" class="col-md-3 ">
         <div class="product-image-wrapper h-80">
             <div class="single-products">
                 <div class="productinfo text-center">
@@ -35,3 +35,4 @@
         </div>
     </div>
 @endforeach
+

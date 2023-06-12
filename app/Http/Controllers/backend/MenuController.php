@@ -104,6 +104,25 @@ class MenuController extends Controller
             }
             return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
         }
+        if (isset($request->ADDPOST)) {
+            $list_id = $request->checkIdPost;
+            foreach ($list_id as $id) {
+                $post = Post::find($id);
+                $menu = new Menu();
+                $menu->name = $post->title;
+                $menu->link = $post->slug;
+                $menu->table_id = $id;
+                $menu->parent_id = 0;
+                $menu->sort_order = 1;
+                $menu->type = 'post';
+                $menu->position = $request->position;
+                $menu->status = 2;
+                $menu->created_at = date('Y-m-d H:i:s');
+                $menu->created_by = 1;
+                $menu->save();
+            }
+            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg' => 'Thêm mẫu tin thành công !']);
+        }
         if (isset($request->ADDPAGE)) {
             $list_id = $request->checkIdPage;
             foreach ($list_id as $id) {

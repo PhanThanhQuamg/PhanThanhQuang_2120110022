@@ -37,8 +37,8 @@
                                 <button type="submit" class="btn btn-sm btn-success">
                                     <i class="fas fa-save"></i> Lưu[Cập nhật]
                                 </button>
-                                <a href="{{ route('customer.index') }}"class="btn btn-sm btn-info">
-                                    <i class="fas fa-trash"></i> Quay lại danh sách
+                                <a href="{{ route('user.index') }}"class="btn btn-sm btn-info">
+                                    <i class="fas fa-long-arrow-alt-left"></i> Quay lại danh sách
                                 </a>
                             </div>
                         </div>

@@ -37,6 +37,7 @@ Route::get('lien-he', [LienheController::class, 'index'])->name('site.index');
 Route::get('san-pham', [SiteController::class, 'product'])->name('site.product');
 Route::get('tim-kiem', [SiteController::class, 'search'])->name('site.search');
 Route::get('thuong-hieu', [SiteController::class, 'brand'])->name('site.brand');
+// Route::post('tat-ca-san-pham/{slug}', [SiteController::class, 'allproduct'])->name('site.allproduct');
 Route::get('bai-viet', [SiteController::class, 'post'])->name('site.post');
 Route::get('khach-hang', [LienheController::class, 'index'])->name('site.index');
 Route::get('Add-Cart/{id}', [CartController::class, 'AddCart'])->name('cart.AddCart');
@@ -52,7 +53,7 @@ Route::get('Đat-hang-thanh-cong', [CartController::class, 'thanhcong'])->name('
 Route::get('login', [AuthController::class, 'getlogin'])->name('login');
 Route::post('login', [AuthController::class, 'postlogin'])->name('postlogin');
 Route::get('dang-nhap', [SiteController::class, 'getlogin'])->name('frontend.login');
-Route::post('dang-mhap', [SiteController::class, 'postlogin'])->name('frontend.postlogin');
+Route::post('dang-nhap', [SiteController::class, 'postlogin'])->name('frontend.postlogin');
 Route::get('dang-xuat', [SiteController::class, 'logoutcustomer'])->name('frontend.logout');
 Route::get('register', [SiteController::class, 'getregister'])->name('frontend.register');
 Route::post('register', [SiteController::class, 'postregister'])->name('frontend.postregister');

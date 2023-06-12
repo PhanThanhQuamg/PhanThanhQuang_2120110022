@@ -29,9 +29,6 @@
                         <div class="col-md-6">
                         </div>
                         <div class="col-md-6 text-right">
-                            <a href="{{ route('order.destroy', ['order' => $order->id]) }}"class="btn btn-sm btn-danger">
-                                <i class="fas fa-trash"></i> Xóa
-                            </a>
                             <a href="{{ route('order.index') }}"class="btn btn-sm btn-success">
                                 <i class="fas fa-long-arrow-alt-left"></i> Quay về danh sách
                             </a>

@@ -64,9 +64,11 @@ class SiteController extends Controller
 
     public function home()
     {
+        $post = Post::where('status', '=', '1')->orderBy('created_at', 'desc')->take(1)->get();
         $list_topic = Topic::where('status', '=', '1')->get();
+        $list_post = Post::where('status', '=', '1')->orderBy('created_at', 'desc')->take(3)->get();
         $list_category = Category::where([['parent_id', '=', 0], ['status', '=', '1']])->get();
-        return view('frontend.home', compact('list_category', 'list_topic'));
+        return view('frontend.home', compact('list_category', 'post', 'list_post', 'list_topic'));
     }
     private  function product_category($slug)
     {
@@ -208,7 +210,7 @@ class SiteController extends Controller
         $post_list = Post::where([['status', '=', '1'], ['type', '=', 'post']])
             ->orderBy('created_at', 'desc')
             ->paginate(9);
-        return view('fronted.brapostnd', compact('post_list'));
+        return view('fronted.brandpost', compact('post_list'));
     }
 
     public function search(Request $req)
@@ -243,13 +245,11 @@ class SiteController extends Controller
     }
     public function  logoutcustomer()
     {
-
         Auth::guard('customer')->logout();
         return redirect()->route('frontend.login');
     }
     public function getregister()
     {
-
         return view('frontend.login');
     }
     public function postregister(Request $request)
@@ -289,4 +289,35 @@ class SiteController extends Controller
         $customer->save();
         return redirect()->route('frontend.login');
     }
+    // public function allproduct($slug)
+    // {
+    //     $row_cat = Category::where([['slug', '=', $slug], ['status', '=', 1]])->first();
+    //     $list_category_id = array();
+    //     array_push($list_category_id, $row_cat->id);
+
+    //     // Xét cấp con
+    //     $list_category1 = Category::where([['parent_id', '=', $row_cat->id], ['status', '=', '1']])->get();
+    //     if (count($list_category1) > 0) {
+    //         foreach ($list_category1 as $row_cat1) {
+    //             array_push($list_category_id, $row_cat1->id);
+    //             $list_category2 = Category::where([['parent_id', '=', $row_cat1->id], ['status', '=', '1']])->get();
+    //             if (count($list_category2) > 0) {
+    //                 foreach ($list_category2 as $row_cat2) {
+    //                     array_push($list_category_id, $row_cat2->id);
+    //                     $list_category3 = Category::where([['parent_id', '=', $row_cat2->id], ['status', '=', '1']])->get();
+    //                     if (count($list_category3) > 0) {
+    //                         foreach ($list_category3 as $row_cat3) {
+    //                             array_push($list_category_id, $row_cat3->id);
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     $product_list = Product::where('status', 1)
+    //         ->whereIn('category_id', $list_category_id)
+    //         ->orderBy('created_at', 'desc')
+    //         ->paginate(3);
+    //     return view('frontend.allproduct', compact('product_list', 'row_cat'));
+    // }
 }

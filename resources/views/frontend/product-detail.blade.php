@@ -76,14 +76,9 @@
             <p> {!! $product->detail !!}</p>
         </div>
 
-
-
-
-        <!--/category-tab-->
-
+        {{-- san pham cung loai --}}
         @if (count($product_list) > 0)
             <div class="recommended_items">
-                <!--recommended_items-->
                 <h2 class="title text-center">Sản phẩm cùng loại</h2>
                 <div class="col-md-12">
                     @foreach ($product_list as $row)
@@ -104,14 +99,13 @@
                                     <h2>{{ number_format($row->price_buy, 0) }} VNĐ</h2>
                                     <p
                                         style="  text-overflow: ellipsis;
-                            overflow: hidden;
-                            white-space: nowrap;">
-                                        {{ $product->name }}</p>
-                                    <a onclick="AddCart({{ $product->id }})" href="javasCrip:"
+                                                overflow: hidden;
+                                                white-space: nowrap;">
+                                        {{ $row->name }}</p>
+                                    <a onclick="AddCart({{ $row->id }})" href="javasCrip:"
                                         class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm giỏ
                                         hàng</a>
                                 </div>
-
                             </div>
                         </div>
                     @endforeach
@@ -119,11 +113,6 @@
 
             </div>
         @endif
-        <!--/recommended_items-->
-
-
-
-
     </section>
     <script>
         function myFunction(smallimg) {
@@ -131,5 +120,4 @@
             fullImg.src = smallimg.src;
         }
     </script>
-
 @endsection

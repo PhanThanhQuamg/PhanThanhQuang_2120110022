@@ -2,52 +2,75 @@
 @section('title', 'Trang chủ')
 @section('content')
     <section id="slider">
+        <div class="col-md-12">
+            <div class="container">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-8">
+                    <x-slideshow />
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
         <div class="container">
-            <x-slideshow />
+            <x-brand-content />
         </div>
     </section>
     <section>
         <div class="container">
             <div class="row">
-                <div class="left-sidebar">
-                    <div class="col-sm-3">
-                        <x-category-list />
-                        <x-brand-list />
-                        <div class="price-range">
-                            <!--price-range-->
-                            <h2>Price Range</h2>
-                            <div class="well text-center">
-                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-                                    data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-                                <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-                            </div>
-                        </div>
-                        <div class="shipping text-center">
-                            <img src="frontend/images//shipping.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
                 @foreach ($list_category as $row_category)
-                    <div class="col-sm-9 padding-right">
+                    <div class="container">
                         <div class="features_items">
                             <a href="{{ route('slug.home', ['slug' => $row_category->slug]) }}">
                                 <h2 class="title text-center">{{ $row_category->name }}</h2>
                             </a>
                         </div>
-                        <x-product-home :rowcat="$row_category" />
-                    </div>
-                @endforeach
-                <div class="col-md-3"></div>
-                <div class="col-sm-9">
-                    <div class="row">
-                        @foreach ($list_topic as $topic)
-                            <div class="col-sm-6">
-                                <div class="card" style="width: 25rem;">
-                                    <h3>{{ $topic->name }}</h3>
-                                    <x-post-home :rowpost="$topic" />
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <x-product-home :rowcat="$row_category" />
                             </div>
-                        @endforeach
+                        </div>
+                    </div>
+                    {{-- <div style="margin-bottom: 15px" class="text-center d-flex justify-content-center">
+                        <button class="btn btn-light" style="margin-right: 5px; margin-top:5px">
+                            <a href="{{ route('site.allproduct', ['slug' => $row_category->slug]) }}">Xem Thêm</a>
+                        </button>
+                    </div> --}}
+                @endforeach
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3 featured-items">
+                                <img style="width:270px;height:350px;" src="{{ asset('images/sale.jpg') }}" alt="">
+                            </div>
+                            <div class="col-md-4">
+                                @foreach ($post as $item)
+                                    <a href="{{ route('slug.home', ['slug' => $item->slug]) }}"> <img
+                                            style="max-width:350px;max-height:350px"
+                                            src="{{ asset('images/post/' . $item->image) }}" class="card-img-top"></a>
+                                    <h3>{{ $item->title }}</h3>
+                                @endforeach
+                            </div>
+                            <div class="col-md-5 featured-items">
+                                @foreach ($list_post as $item)
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td> <a href="{{ route('slug.home', ['slug' => $item->slug]) }}"> <img
+                                                            style="max-width:150px;max-height:150px"
+                                                            src="{{ asset('images/post/' . $item->image) }}"
+                                                            class="card-img-top"></a></td>
+                                                <td>
+                                                    <span>{{ $item->title }}</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,6 @@ class SliderStoreRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'link' => 'required',
             'image' => 'required',
             'sort_order' => 'required',
         ];
@@ -24,8 +23,7 @@ class SliderStoreRequest extends FormRequest
     {
         return [
             'name.required' => 'Bạn chưa nhập tên slider',
-            'link.required' => 'Bạn chưa nhập link',
-            'image.required' => 'Bạn chưa chọn hình ảnh',
+                'image.required' => 'Bạn chưa chọn hình ảnh',
             'sort_order.required' => 'Bạn chưa sắp xếp',
 
 

@@ -167,6 +167,39 @@
                                         </div>
                                     </div>
                                     {{-- end card --}}
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingPost">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                                    data-toggle="collapse" data-target="#collapsePost"
+                                                    aria-expanded="false" aria-controls="collapsePost">
+                                                    Bài viết
+                                                </button>
+                                            </h2>
+                                        </div>
+                                        <div id="collapsePost" class="collapse" aria-labelledby="headingPost"
+                                            data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                @foreach ($list_post as $post)
+                                                    <div class="form-check">
+                                                        <input name="checkIdPost[]" class="form-check-input"
+                                                            type="checkbox" value="{{ $post->id }}"
+                                                            id="checkPage{{ $post->id }}">
+                                                        <label class="form-check-label"
+                                                            for="checkPage{{ $post->id }}">
+                                                            {{ $post->title }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                                <div class="my-3">
+                                                    <input name="ADDPOST" type="submit"
+                                                        class="btn btn-sm btn-success form-control" value="Thêm">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="card">
                                         <div class="card-header" id="headingPage">
                                             <h2 class="mb-0">
@@ -198,6 +231,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
                                     {{-- end card --}}
                                     <div class="card">
                                         <div class="card-header" id="headingCustom">
@@ -238,7 +273,7 @@
                                         <tr>
                                             <th style="width:30px" class="text-center">#</th>
                                             <th style="width:100px" class="text-center">Tên Menu</th>
-                                            <th style="width:100px" class="text-center">Liên kết</th>
+                                            {{-- <th style="width:100px" class="text-center">Liên kết</th> --}}
                                             <th style="width:100px" class="text-center">Vị trí</th>
                                             <th style="width:150px" class="text-center">Chức năng</th>
                                             <th style="width:30px" class="text-center">ID</th>
@@ -253,7 +288,7 @@
                                         <input type="checkbox">
                                     </td>
                                     <td>{{ $menu->name }}</td>
-                                    <td>{{ $menu->link }}</td>
+                                    {{-- <td>{{ $menu->link }}</td> --}}
                                     <td class="text-center">{{ $menu->position }}</td>
                                     <td class="text-center">
                                         @if ($menu->status == 1)

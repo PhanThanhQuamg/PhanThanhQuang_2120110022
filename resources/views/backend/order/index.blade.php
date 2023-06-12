@@ -70,27 +70,14 @@
                                     <td>
                                         <input type="checkbox">
                                     </td>
-                                    {{-- <td>
-                                        <img class="img-fluid" src="{{ asset('images/order/' . $order->image) }}"
-                                            alt="{{ $order->image }}">
-                                    </td> --}}
                                     <td>{{ $order->cus_id }}</td>
                                     <td>{{ $order->fullname }}</td>
                                     <td>{{ $order->address }}</td>
                                     <td>{{ $order->email }}</td>
                                     <td class="text-center">{{ $order->created_at }}</td>
                                     <td class="text-center">
-                                        @if ($order->status == 1)
-                                            <a href="{{ route('order.status', ['order' => $order->id]) }}"
-                                                class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i> </a>
-                                        @else
-                                            <a href="{{ route('order.status', ['order' => $order->id]) }}"
-                                                class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i> </a>
-                                        @endif
                                         <a href="{{ route('order.show', ['order' => $order->id]) }}"
                                             class="btn btn-sm btn-success"><i class="far fa-eye"></i> View</a>
-                                        <a href="{{ route('order.delete', ['order' => $order->id]) }}"
-                                            class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</a>
                                     </td>
                                     <td>{{ $order->id }}</td>
                                 </tr>

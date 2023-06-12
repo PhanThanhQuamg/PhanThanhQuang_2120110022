@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Phan Thanh Quang</title>
+    <title>@yield('title')</title>
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/prettyPhoto.css') }}" rel="stylesheet">
@@ -61,6 +61,18 @@
         margin: 10px;
         margin-top: 10px;
     }
+
+    input[type=text] {
+        margin-top: 10px;
+        width: 80%;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    /* When the input field gets focus, change its width to 100% */
+    input[type=text]:focus {
+        width: 100%;
+    }
 </style>
 
 <body>
@@ -69,19 +81,28 @@
             <!--header-middle-->
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-md-3">
                         <div class="logo pull-left">
                             <a href="index.html"><img style="width:120px;hieght:50px";
                                     src="frontend/images/thanhquang.png" alt="" /></a>
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-md-5 ">
+
+                        <form action="{{ route('site.search') }}" method="get">
+
+                            <input class="form-control" type="text" name="key" placeholder="Tìm kiếm..">
+
+
+                        </form>
+                    </div>
+                    <div class="col-md-4">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li>
                                     <!-- Button trigger modal -->
                                     <a data-toggle="modal" data-target="#staticBackdrop">
-                                        <i class="fa fa-shopping-cart"></i>
+                                        <i style="font-size: 16px" class="fa fa-shopping-cart"> Giỏ hàng</i>
                                     </a>
 
                                     <!-- Modal -->
@@ -215,102 +236,16 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="companyinfo">
-                            <h2><span>e</span>-shopper</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="frontend/images/iframe1.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="frontend/images/iframe2.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="frontend/images/iframe3.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="video-gallery text-center">
-                                <a href="#">
-                                    <div class="iframe-img">
-                                        <img src="frontend/images/iframe4.png" alt="" />
-                                    </div>
-                                    <div class="overlay-icon">
-                                        <i class="fa fa-play-circle-o"></i>
-                                    </div>
-                                </a>
-                                <p>Circle of Hands</p>
-                                <h2>24 DEC 2014</h2>
-                            </div>
-                        </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="address">
-                            <img src="frontend/images//map.png" alt="" />
-                            <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
-
         <div class="footer-widget">
             <div class="container">
-                <div class="row">
-                    <x-footer-menu />
-
-                    <div class="col-sm-3 col-sm-offset-1">
-                        <div class="single-widget">
-                            <h2>About Shopper</h2>
-                            <form action="#" class="searchform">
-                                <input type="text" placeholder="Your email address" />
-                                <button type="submit" class="btn btn-default"><i
-                                        class="fa fa-arrow-circle-o-right"></i></button>
-                                <p>Get the most recent updates from <br />our site and be updated your self...
-                                </p>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
+                <x-footer-menu />
             </div>
         </div>
 

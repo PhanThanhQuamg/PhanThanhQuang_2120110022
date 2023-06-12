@@ -58,8 +58,9 @@
                             <tr>
                                 <th style="width:30px" class="text-center">#</th>
                                 <th style="width:100px" class="text-center">Hình đại diện</th>
+                                {{-- <th>Tên sản phẩm</th>
+                                <th>Tên thương hiệu</th> --}}
                                 <th>Tên danh mục</th>
-                                <th>Chi tiết</th>
                                 <th>Ngày đăng</th>
                                 <th style="width:280px" class="text-center">Chức năng</th>
                                 <th style="width:30px" class="text-center">ID</th>
@@ -83,7 +84,6 @@
                                             alt="{{ $hinh }}">
                                     </td>
                                     <td>{{ $product->name }}</td>
-                                    <td>{!! $product->detail !!} </td>
                                     <td class="text-center">{{ $product->created_at }}</td>
                                     <td class="text-center">
                                         @if ($product->status == 1)

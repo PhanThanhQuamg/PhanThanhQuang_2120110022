@@ -39,7 +39,7 @@ class SliderController extends Controller
         $slider->name = $request->name;
         $slider->link = $request->link;
         $slider->sort_order = $request->sort_order;
-        $slider->posistion = $request->posistion;
+        $slider->posistion = 'sliderShow';
         $slider->status = $request->status;
         $slider->created_at = date('Y-m-d H:i:s');
         $slider->create_by = 1;
@@ -72,24 +72,19 @@ class SliderController extends Controller
     {
         $slider = Slider::find($id);
         $list_slider  = Slider::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        $html_parent_id = '';
         $html_sort_order = '';
         foreach ($list_slider as $item) {
-            $html_parent_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
             $html_sort_order .= '<option value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
         }
-        return view('backend.slider.edit', compact('slider', 'html_parent_id', 'html_sort_order'));
+        return view('backend.slider.edit', compact('slider', 'html_sort_order'));
     }
 
     public function update(SliderUpdateRequest $request, $id)
     {
         $slider = Slider::find($id);
         $slider->name = $request->name;
-        $slider->slug = Str::slug($slider->name = $request->name, '-');
-        $slider->metakey = $request->metakey;
-        $slider->metadesc = $request->metadesc;
-        $slider->parent_id = $request->parent_id;
         $slider->sort_order = $request->sort_order;
+        $slider->posistion = 'sliderShow';
         $slider->status = $request->status;
         $slider->updated_at = date('Y-m-d H:i:s');
         $slider->update_by = 1;
@@ -102,15 +97,12 @@ class SliderController extends Controller
 
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); // lấy phần mở rộng của tập tin
-            $filename = $slider->slug . '.' . $extension; // lấy tên slug  + phần mở rộng 
+            $filename = $slider->name . '.' . $extension; // lấy tên slug  + phần mở rộng 
             $file->move($path_dir, $filename);
             $slider->image = $filename;
         }
         //end upload file
         if ($slider->save()) {
-            $link = Link::where([['type', '=', 'slider'], ['tableid', '=', $id]])->first();
-            $link->slug = $slider->slug;
-            $link->save();
             return redirect()->route('slider.index')->with('message', ['type' => 'success', 'msg' => 'Sửa mẫu tin thành công !']);
         } else
             return redirect()->route('slider.index')->with('message', ['type' => 'danger', 'msg' => 'Sửa mẫu tin không thành công !']);

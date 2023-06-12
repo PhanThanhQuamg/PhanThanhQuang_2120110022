@@ -15,16 +15,14 @@ class SliderUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'metakey' => 'required',
-            'metadesc' => 'required'
+            
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'Bạn chưa nhập tên',
-            'metakey.required' => 'Bạn chưa nhập từ khóa tìm kiếm',
-            'metadesc.required' => 'Bạn chưa nhập mô tả'
+           
         ];
     }
 }
